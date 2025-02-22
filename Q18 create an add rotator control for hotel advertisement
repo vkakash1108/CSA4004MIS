@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Ad Rotator</title>
+  <style>
+    .ad-container { width: 100%; max-width: 600px; margin: auto; overflow: hidden; }
+    .ad { display: none; text-align: center; }
+    .ad img { width: 100%; }
+  </style>
+</head>
+<body>
+
+  <div class="ad-container">
+    <div class="ad"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/4f/90/19/beach-view.jpg?w=900&h=500&s=1" alt="Hotel 1"><p>Luxury Beachfront</p></div>
+    <div class="ad"><img src="https://media.timeout.com/images/105927850/750/562/image.jpg" alt="Hotel 2"><p>Skyline View Hotel</p></div>
+    <div class="ad"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSj3D1sKkV8jvB60Fhz63mWJYyahVLoj2TZQ&s" alt="Hotel 3"><p>Serene Countryside</p></div>
+  </div>
+
+  <script>
+    let index = 0;
+    const ads = document.querySelectorAll('.ad');
+    setInterval(() => {
+      ads.forEach(ad => ad.style.display = 'none');
+      ads[index].style.display = 'block';
+      index = (index + 1) % ads.length;
+    }, 3000);
+  </script>
+
+</body>
+</html>

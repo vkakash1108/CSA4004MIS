@@ -1,0 +1,22 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting Eligibility</title>
+</head>
+<body>
+    <h1>Check Voting Eligibility</h1>
+    <input type="date" id="birthdate">
+    <button onclick="checkEligibility()">Check</button>
+    <p id="eligibilityResult"></p>
+
+    <script>
+        function checkEligibility() {
+            const birthdate = new Date(document.getElementById('birthdate').value);
+            const age = new Date().getFullYear() - birthdate.getFullYear();
+            const isEligible = age >= 18;
+            document.getElementById('eligibilityResult').textContent = isEligible ? "Eligible to vote!" : "Not eligible to vote.";
+        }
+    </script>
+</body>
+</html>

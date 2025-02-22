@@ -1,0 +1,21 @@
+-- Create tables
+CREATE TABLE students (student_id INT PRIMARY KEY, student_name VARCHAR(100));
+CREATE TABLE courses (course_id INT PRIMARY KEY, course_name VARCHAR(100));
+CREATE TABLE registrations (student_id INT, course_id INT, PRIMARY KEY (student_id, course_id), 
+    FOREIGN KEY (student_id) REFERENCES students(student_id), FOREIGN KEY (course_id) REFERENCES courses(course_id));
+
+-- Insert students and courses
+INSERT INTO students VALUES (1, 'Alice'), (2, 'Bob');
+INSERT INTO courses VALUES (101, 'CS101'), (102, 'Math101');
+
+-- Register students for courses
+INSERT INTO registrations VALUES (1, 101), (1, 102), (2, 101);
+
+-- Query: Check courses a student is registered for
+SELECT c.course_name FROM courses c JOIN registrations r ON c.course_id = r.course_id WHERE r.student_id = 1;
+
+-- Query: Find students in a particular course
+SELECT s.student_name FROM students s JOIN registrations r ON s.student_id = r.student_id WHERE r.course_id = 101;
+
+-- Query: All available courses
+SELECT * FROM courses;

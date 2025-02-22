@@ -1,0 +1,30 @@
+Public Class Form1
+    Private Sub btnSubmit_Click(sender As Object, e As EventArgs) Handles btnSubmit.Click
+        Dim gender As String = ""
+
+        ' Check which gender is selected
+        If rbMale.Checked Then
+            gender = "Male"
+        ElseIf rbFemale.Checked Then
+            gender = "Female"
+        Else
+            gender = "Not Selected"
+        End If
+
+        ' Check selected hobbies
+        Dim hobbies As String = ""
+        If cbReading.Checked Then hobbies &= "Reading, "
+        If cbSports.Checked Then hobbies &= "Sports, "
+        If cbMusic.Checked Then hobbies &= "Music, "
+
+        ' Remove the last comma if any hobbies were selected
+        If hobbies.Length > 0 Then
+            hobbies = hobbies.Substring(0, hobbies.Length - 2)
+        Else
+            hobbies = "None"
+        End If
+
+        ' Display the result in the label
+        lblResult.Text = "Gender: " & gender & vbNewLine & "Hobbies: " & hobbies
+    End Sub
+End Class
